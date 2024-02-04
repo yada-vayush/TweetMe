@@ -1,0 +1,19 @@
+{
+  "name": "twitterproject",
+  "version": "1.0.0",
+  "description": "--User should be able to create a post\r --{the post /tweet cannnot have more than 250 char}\r --every post /tweet will be having support for image upload\r ---Any post should be visible to all those users who follows the author\r --Any One who follows you can comment on the post/tweet\r --Anyone who follows you can like on a post / tweet",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx nodemon ./src/index"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.4.1",
+    "express": "^4.18.2",
+    "mongoose": "^8.1.1",
+    "nodemon": "^3.0.3"
+  }
+}
