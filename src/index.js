@@ -14,7 +14,7 @@ app.listen(PORT, async () => {
 
   const service = new TweetService();
   const tweet = await service.create({
-    content: "The match is #excited #Trend #fast #INDVSENG #winning",
+    content: "#India is   #WINNINGIt ",
   });
   console.log(tweet);
 });
