@@ -1,23 +1,33 @@
-const Tweet = require("../models/tweet");
-const HashtagRepository = require("./hashtag-repository");
+const { HashTag } = require("../models/index");
 
-class TweetRepository {
+class HashtagRepository {
   async create(data) {
     try {
-      const tweet = await Tweet.create(data);
-
-      return tweet;
+      const tag = await HashTag.create(data);
+      return tag;
     } catch (error) {
       console.log("====================================");
-      console.log("Error occured in tweet repository ");
+      console.log("Error occured in tweet repository");
+      console.log("====================================");
+      throw error;
+    }
+  }
+  async bulkCreate(data) {
+    try {
+      const tags = await HashTag.insertMany(data);
+
+      return tags;
+    } catch (error) {
+      console.log("====================================");
+      console.log("Error occured in tweet repository");
       console.log("====================================");
       throw error;
     }
   }
   async get(id) {
     try {
-      const tweet = await Tweet.findById(id);
-      return tweet;
+      const tag = await HashTag.findById(id);
+      return tag;
     } catch (error) {
       console.log("====================================");
       console.log("Error occured in tweet repository");
@@ -25,20 +35,20 @@ class TweetRepository {
       throw error;
     }
   }
-  async getAll(offset, limit) {
-    try {
-      const tweet = await Tweet.find().skip(offset).limit(limit);
-      return tweet;
-    } catch (error) {
-      console.log("====================================");
-      console.log("Error occured in tweet repository");
-      console.log("====================================");
-      throw error;
-    }
-  }
+  //   async getAll(offset, limit) {
+  //     try {
+  //       const tweet = await HashTag.find().skip(offset).limit(limit);
+  //       return tweet;
+  //     } catch (error) {
+  //       console.log("====================================");
+  //       console.log("Error occured in tweet repository");
+  //       console.log("====================================");
+  //       throw error;
+  //     }
+  //   }
   // async getWithComments(id) {
   //   try {
-  //     const tweet = await Tweet.findById(id)
+  //     const tweet = await HashTag.findById(id)
   //       .populate({ path: "comments" })
   //       .lean();
   //     return tweet;
@@ -51,8 +61,8 @@ class TweetRepository {
   // }
   async delete(id) {
     try {
-      const tweet = await Tweet.findByIdAndDelete(id);
-      return tweet;
+      const response = await HashTag.findByIdAndDelete(id);
+      return response;
     } catch (error) {
       console.log("====================================");
       console.log("Error occured in tweet repository");
@@ -62,7 +72,7 @@ class TweetRepository {
   }
   // async update(id, data) {
   //   try {
-  //     const tweet = await Tweet.findByIdAndUpdate(id, data, { new: true });
+  //     const tweet = await HashTag.findByIdAndUpdate(id, data, { new: true });
   //     return tweet;
   //   } catch (error) {
   //     console.log("====================================");
@@ -71,5 +81,17 @@ class TweetRepository {
   //     throw error;
   //   }
   // }
+  async findByName(data) {
+    try {
+      const tags = await HashTag.find({
+        title: data,
+      });
+      return tags;
+    } catch (error) {
+      console.log("Error occured in the tweet repository");
+      throw error;
+    }
+  }
 }
-module.exports = TweetRepository;
+
+module.exports = HashtagRepository;

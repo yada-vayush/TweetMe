@@ -1,4 +1,4 @@
-const mongoos = require("mongoose");
+const mongoose = require("mongoose");
 
 const connect = async () => {
   await mongoose.connect("mongodb://localhost/Twiiter_Dev");

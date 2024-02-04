@@ -1,4 +1,4 @@
-const monoose = require("mongoose");
+const mongoose = require("mongoose");
 
 const hashtagSchema = new mongoose.Schema(
   {
@@ -6,7 +6,7 @@ const hashtagSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    tweet: [
+    tweets: [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Tweet",
