@@ -71,5 +71,18 @@ class TweetRepository {
   //     throw error;
   //   }
   // }
+
+  async find(id) {
+    try {
+      const tweet = await Tweet.findById(id).populate("likes");
+
+      return tweet;
+    } catch (error) {
+      console.log("====================================");
+      console.log("Error occured in tweet repository of find");
+      console.log("====================================");
+      throw error;
+    }
+  }
 }
 module.exports = TweetRepository;
