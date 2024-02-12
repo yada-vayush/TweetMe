@@ -10,7 +10,7 @@ class LikeService {
   async toggleLike(
     modelId,
     modelType,
-    userId // /api/v1/like/toggle?id=modelId&type=Tweet
+    id // /api/v1/like/toggle?id=modelId&type=Tweet
   ) {
     if (modelType == "Tweet") {
       var likeable = await this.tweetRepository.find(modelId);
@@ -22,7 +22,7 @@ class LikeService {
     }
     console.log("beyond");
     const exists = await this.likeRepository.findByUserLikeable({
-      user: userId,
+      user: id,
       onModel: modelType,
       likeable: modelId,
     });
@@ -34,7 +34,7 @@ class LikeService {
       var isAdded = false;
     } else {
       const newLike = await this.likeRepository.create({
-        user: userId,
+        user: id,
         onModel: modelType,
         likeable: modelId,
       });

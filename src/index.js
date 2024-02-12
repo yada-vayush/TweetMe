@@ -23,13 +23,13 @@ app.listen(PORT, async () => {
   //   content: "#India is   #WINNINGIt ",
   // });
   // console.log(tweet);
-  const userrepo = new UserRepository();
-  const tweet = new TweetRepository();
-  const tweets = await tweet.getAll(0, 5);
+  // const userrepo = new UserRepository();
+  // const tweet = new TweetRepository();
+  // const tweets = await tweet.getAll(0, 5);
 
-  const users = await userrepo.getAll();
+  // const users = await userrepo.getAll();
 
-  console.log(users);
-  const service = new LikeService();
-  await service.toggleLike(tweets[0]._id, "Tweet", users[0].id);
+  // console.log(users);
+  // const service = new LikeService();
+  // await service.toggleLike(tweets[0]._id, "Tweet", users[0].id);
 });
