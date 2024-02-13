@@ -36,19 +36,19 @@ class TweetRepository {
       throw error;
     }
   }
-  // async getWithComments(id) {
-  //   try {
-  //     const tweet = await Tweet.findById(id)
-  //       .populate({ path: "comments" })
-  //       .lean();
-  //     return tweet;
-  //   } catch (error) {
-  //     console.log("====================================");
-  //     console.log("Error occured in tweet repository");
-  //     console.log("====================================");
-  //     throw error;
-  //   }
-  // }
+  async getWithComments(id) {
+    try {
+      const tweet = await Tweet.findById(id)
+        .populate({ path: "comments" })
+        .lean();
+      return tweet;
+    } catch (error) {
+      console.log("====================================");
+      console.log("Error occured in tweet repository");
+      console.log("====================================");
+      throw error;
+    }
+  }
   async delete(id) {
     try {
       const tweet = await Tweet.findByIdAndDelete(id);

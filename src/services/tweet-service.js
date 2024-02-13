@@ -50,5 +50,17 @@ class TweetService {
       throw error;
     }
   }
+  async get(id) {
+    try {
+      const tweet = await this.tweetRepository.getWithComments(id);
+      return tweet;
+    } catch (error) {
+      console.log("====================================");
+      console.log("Error occured in tweet service layer");
+      console.log("====================================");
+
+      throw error;
+    }
+  }
 }
 module.exports = TweetService;
