@@ -1,5 +1,6 @@
 const express = require("express");
 const connect = require("./config/database");
+const passport = require("passport");
 //const { HashtagRepository, TweetRepository } = require("./repository/index");
 const TweetRepository = require("./repository/tweet-repository");
 const LikeService = require("./services/like-Service");
@@ -7,9 +8,13 @@ const UserRepository = require("./repository/user-repository");
 
 const apiRoutes = require("./routes/index");
 const bodyParser = require("body-parser");
+const passportAuth = require("./config/jwt-middleware");
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(passport.initialize());
+passportAuth(passport);
 app.use("/api", apiRoutes);
 const PORT = 3002;
 app.listen(PORT, async () => {

@@ -12,6 +12,13 @@ class UserService {
       throw error;
     }
   }
+  async getUserByEmail(email) {
+    try {
+      return await this.userRepo.findBy(email);
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 module.exports = UserService;
