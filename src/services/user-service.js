@@ -2,11 +2,15 @@ const UserRepository = require("../repository/user-repository");
 
 class UserService {
   constructor() {
-    this.userRepo = UserRepository();
+    this.userRepo = new UserRepository();
   }
   async signUp(data) {
-    const user = await this.userRepo.create(data);
-    return user;
+    try {
+      const user = await this.userRepo.create(data);
+      return user;
+    } catch (error) {
+      throw error;
+    }
   }
 }
 
